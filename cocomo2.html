@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/src/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/src/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/src/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/src/img/favicon/site.webmanifest">
+    <title>Cocomo</title> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body class="body">
+    <div class="container mt-5">
+        <div class="btn-group mb-4">
+            <a class="btn btn-primary" href="index.html">COCOMO</a>
+            <a class="btn btn-primary active" href="#">COCOMOⅡ</a>
+            <a class="btn btn-primary" href="#">About</a>
+        </div>
+
+        <div class="mb-4">
+            <h5>Выберете модель:</h5>
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="modelType" id="earlyDesign" value="basic" checked>
+                <label class="btn btn-outline-primary" for="earlyDesign">Early Design</label>
+              
+                <input type="radio" class="btn-check" name="modelType" id="postArchitecture" value="intermediate">
+                <label class="btn btn-outline-primary" for="postArchitecture">Post Architecture</label>
+              </div>
+        </div>
+
+        <!-- Input for Lines of Code -->
+        <div class="mb-4">
+            <h5>Строчек кода(в тыс.):</h5>
+            <input type="number" class="form-control" id="kloc" placeholder="Введите кол-во строк(в тыс.)" min="1">
+        </div>
+
+        <!-- Parameters for Intermediate Model -->
+        <div class="mb-4" >
+            <h5>Факторы масштаба:</h5>
+            <ul class="list-group">
+                        <li class="list-group-item"><h6>Прецидентность</h6>
+                            <select class="form-select" id="SF1">
+                                <option value="6.20" >Очень низкий</option>
+                                <option value="4.96">Низкий</option>
+                                <option value="3.72" selected>Средний</option>
+                                <option value="2.48">Высокий</option>
+                                <option value="1.24">Очень высокий</option>
+                                <option value="0.0">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Гибкость процесса разработки</h6>
+                            <select class="form-select" id="SF2">
+                                <option value="5.07" >Очень низкий</option>
+                                <option value="4.05">Низкий</option>
+                                <option value="3.04" selected>Средний</option>
+                                <option value="2.03">Высокий</option>
+                                <option value="1.01">Очень высокий</option>
+                                <option value="0.0">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Архитектура и разрешение рисков</h6>
+                            <select class="form-select" id="SF3">
+                                <option value="7.07" >Очень низкий</option>
+                                <option value="5.65">Низкий</option>
+                                <option value="4.24" selected>Средний</option>
+                                <option value="2.83">Высокий</option>
+                                <option value="1.41">Очень высокий</option>
+                                <option value="0.0">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Сработанность команды</h6>
+                            <select class="form-select" id="SF4">
+                                <option value="5.48" >Очень низкий</option>
+                                <option value="4.38">Низкий</option>
+                                <option value="3.29" selected>Средний</option>
+                                <option value="2.19">Высокий</option>
+                                <option value="1.10">Очень высокий</option>
+                                <option value="0.0">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Зрелость процессов</h6>
+                            <select class="form-select" id="SF5">
+                                <option value="7.80" >Очень низкий</option>
+                                <option value="6.24">Низкий</option>
+                                <option value="4.68" selected>Средний</option>
+                                <option value="3.12">Высокий</option>
+                                <option value="1.56">Очень высокий</option>
+                                <option value="0.0">Критический</option>
+                            </select>
+                        </li>
+            </ul>
+        </div>
+        <div id="effortMultipliers" class="mb-4" style="display: block;">
+            <h5>Множители трудоемкости:</h5>
+            <ul class="list-group">
+                        <li class="list-group-item"><h6>Квалификация персонала</h6>
+                            <select class="form-select" id="EM1">
+                                <option value="2.12" >Сверхнизкий</option>
+                                <option value="1.62" >Очень низкий</option>
+                                <option value="1.26">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="0.83">Высокий</option>
+                                <option value="0.63">Очень высокий</option>
+                                <option value="0.50">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Опыт персонала</h6>
+                            <select class="form-select" id="EM2">
+                                <option value="1.59" >Сверхнизкий</option>
+                                <option value="1.33" >Очень низкий</option>
+                                <option value="1.22">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="0.87">Высокий</option>
+                                <option value="0.74">Очень высокий</option>
+                                <option value="0.62">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Сложность и надежность продукта</h6>
+                            <select class="form-select" id="EM3">
+                                <option value="0.49" >Сверхнизкий</option>
+                                <option value="0.60" >Очень низкий</option>
+                                <option value="0.83">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="1.33">Высокий</option>
+                                <option value="1.91">Очень высокий</option>
+                                <option value="2.72">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Разработка для повторного использования</h6>
+                            <select class="form-select" id="EM4">
+                                <option value="0.95">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="1.07">Высокий</option>
+                                <option value="1.15">Очень высокий</option>
+                                <option value="1.24">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Сложность платформы разработки</h6>
+                            <select class="form-select" id="EM5">
+                                <option value="0.87">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="1.29">Высокий</option>
+                                <option value="1.81">Очень высокий</option>
+                                <option value="2.61">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Оборудование</h6>
+                            <select class="form-select" id="EM6">
+                                <option value="1.43" >Сверхнизкий</option>
+                                <option value="1.30" >Очень низкий</option>
+                                <option value="1.10">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="0.87">Высокий</option>
+                                <option value="0.73">Очень высокий</option>
+                                <option value="0.62">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Требуемое выполнение графика работ</h6>
+                            <select class="form-select" id="EM7">
+                                <option value="1.43" >Очень низкий</option>
+                                <option value="1.14">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="1.0">Высокий</option>
+                            </select>
+                        </li>
+            </ul>
+        </div>
+        <div id="effortMultipliersPA" class="mb-4" style="display: none;">
+            <h5>Параметры персонала:</h5>
+            <ul class="list-group">
+                        <li class="list-group-item"><h6>Возможности аналитика</h6>
+                            <select class="form-select" id="EMPA1">
+                                <option value="1.42" >Очень низкий</option>
+                                <option value="1.29">Низкий</option>
+                                <option value="1.00" selected>Средний</option>
+                                <option value="0.85">Высокий</option>
+                                <option value="0.71">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Опыт разработки приложений</h6>
+                            <select class="form-select" id="EMPA2">
+                                <option value="1.22" >Очень низкий</option>
+                                <option value="1.10">Низкий</option>
+                                <option value="1.00" selected>Средний</option>
+                                <option value="0.88">Высокий</option>
+                                <option value="0.81">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Возможности программиста</h6>
+                            <select class="form-select" id="EMPA3">
+                                <option value="1.34" >Очень низкий</option>
+                                <option value="1.15">Низкий</option>
+                                <option value="1.00" selected>Средний</option>
+                                <option value="0.88">Высокий</option>
+                                <option value="0.76">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Продолжительность работы персонала</h6>
+                            <select class="form-select" id="EMPA4">
+                                <option value="1.29" >Очень низкий</option>
+                                <option value="1.12">Низкий</option>
+                                <option value="1.00" selected>Средний</option>
+                                <option value="0.90">Высокий</option>
+                                <option value="0.81">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Опыт работы с платформой</h6>
+                            <select class="form-select" id="EMPA5">
+                                <option value="1.19" >Очень низкий</option>
+                                <option value="1.09">Низкий</option>
+                                <option value="1.00" selected>Средний</option>
+                                <option value="0.91">Высокий</option>
+                                <option value="0.85">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Опыт использования языка программирования и инструментальных средств</h6>
+                            <select class="form-select" id="EMPA6">
+                                <option value="1.20" >Очень низкий</option>
+                                <option value="1.09">Низкий</option>
+                                <option value="1.00" selected>Средний</option>
+                                <option value="0.91">Высокий</option>
+                                <option value="0.84">Очень высокий</option>
+                            </select>
+                        </li>
+            </ul>
+            <h5>Параметры продукта:</h5>
+            <ul class="list-group">
+                        <li class="list-group-item"><h6>Требуемая надежность программы</h6>
+                            <select class="form-select" id="EMPA7">
+                                <option value="0.84" >Очень низкий</option>
+                                <option value="0.92">Низкий</option>
+                                <option value="1.00" selected>Средний</option>
+                                <option value="1.10">Высокий</option>
+                                <option value="1.26">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Размер базы данных</h6>
+                            <select class="form-select" id="EMPA8">
+                                <option value="0.23">Низкий</option>
+                                <option value="1.00" selected>Средний</option>
+                                <option value="1.14">Высокий</option>
+                                <option value="1.28">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Сложность программы</h6>
+                            <select class="form-select" id="EMPA9">
+                                <option value="0.73" >Очень низкий</option>
+                                <option value="0.87">Низкий</option>
+                                <option value="1.00" selected>Средний</option>
+                                <option value="1.17">Высокий</option>
+                                <option value="1.34">Очень высокий</option>
+                                <option value="1.74">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Требуемая возможность многократного использования</h6>
+                            <select class="form-select" id="EMPA10">
+                                <option value="0.95">Низкий</option>
+                                <option value="1.00" selected>Средний</option>
+                                <option value="1.07">Высокий</option>
+                                <option value="1.15">Очень высокий</option>
+                                <option value="1.24">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Соответствие документации потребностям жизненного цикла</h6>
+                            <select class="form-select" id="EMPA11">
+                                <option value="0.81" >Очень низкий</option>
+                                <option value="0.91">Низкий</option>
+                                <option value="1.00" selected>Средний</option>
+                                <option value="1.11">Высокий</option>
+                                <option value="1.23">Очень высокий</option>
+                            </select>
+                        </li>
+            </ul>
+            <h5>Параметры платформы:</h5>
+            <ul class="list-group">
+                        <li class="list-group-item"><h6>Ограничения времени выполнения</h6>
+                            <select class="form-select" id="EMPA12">
+                                <option value="1.00" selected>Средний</option>
+                                <option value="1.11">Высокий</option>
+                                <option value="1.29">Очень высокий</option>
+                                <option value="1.63">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Ограничения памяти</h6>
+                            <select class="form-select" id="EMPA13">
+                                <option value="1.00" selected>Средний</option>
+                                <option value="1.05">Высокий</option>
+                                <option value="1.17">Очень высокий</option>
+                                <option value="1.46">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Изменяемость платформы</h6>
+                            <select class="form-select" id="EMPA14">
+                                <option value="0.87">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="1.15">Высокий</option>
+                                <option value="1.30">Очень высокий</option>
+                            </select>
+                        </li>
+            </ul>
+            <h5>Параметры проекта:</h5>
+            <ul class="list-group">
+                        <li class="list-group-item"><h6>Использование инструментальных программных средств</h6>
+                            <select class="form-select" id="EMPA15">
+                                <option value="1.17" >Очень низкий</option>
+                                <option value="1.09">Низкий</option>
+                                <option value="1.00" selected>Средний</option>
+                                <option value="0.90">Высокий</option>
+                                <option value="0.78">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Многоабонентская (удаленная) разработка</h6>
+                            <select class="form-select" id="EMPA16">
+                                <option value="1.22" >Очень низкий</option>
+                                <option value="1.09">Низкий</option>
+                                <option value="1.00" selected>Средний</option>
+                                <option value="0.93">Высокий</option>
+                                <option value="0.86">Очень высокий</option>
+                                <option value="0.80">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item"><h6>Требуемое выполнение графика работ</h6>
+                            <select class="form-select" id="EMPA17">
+                                <option value="1.43" >Очень низкий</option>
+                                <option value="1.14">Низкий</option>
+                                <option value="1.00" selected>Средний</option>
+                                <option value="1.00">Высокий</option>
+                                <option value="1.00">Очень высокий</option>
+                            </select>
+                        </li>
+            </ul>
+        </div>
+
+        <!-- Results Section -->
+        <div class="mt-4">
+            <h5>Результат:</h5>
+            <p id="effort">Трудоёмкость(человекомесяцев): <span class="fw-bold">N/A</span></p>
+            <p id="time">Время разработки (месяцев): <span class="fw-bold">N/A</span></p>
+        </div>
+    </div>
+    <!-- <header class="page-header">
+        <div class="page-header__conteiner">
+            <a class="page-header__conteiner-link" href="">COCOMO</a>
+            <a class="page-header__conteiner-link" href="">COCOMOⅡ</a>
+            <a class="page-header__conteiner-link" href="">About</a>
+        </div>
+    </header>  
+    <footer class="page-footer">©2024, ИП «SoftCalc»</footer>-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="./js/cocomo2.js" type="module"></script>
+</body>
+</html>
