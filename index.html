@@ -3,10 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/src/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/src/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/src/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/src/img/favicon/site.webmanifest">
+    <title>Cocomo</title> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/styles.css">
-    <title>Document</title>
 </head>
-<body>
-    <p>Hallo warld</p>
+<body class="body">
+    <div class="container mt-5">
+        <div class="btn-group mb-4">
+            <a class="btn btn-primary active" href="index.html">COCOMO</a>
+            <a class="btn btn-primary" href="#">COCOMOⅡ</a>
+            <a class="btn btn-primary" href="#">About</a>
+        </div>
+
+        <div class="mb-4">
+            <h5>Выберете модель:</h5>
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="modelType" id="basicModel" value="basic" checked>
+                <label class="btn btn-outline-primary" for="basicModel">Basic</label>
+              
+                <input type="radio" class="btn-check" name="modelType" id="intermediateModel" value="intermediate">
+                <label class="btn btn-outline-primary" for="intermediateModel">Intermediate</label>
+              </div>
+        </div>
+        <div class="mb-4">
+            <h5>Выберете тип:</h5>
+            <select class="form-select" id="projectType">
+                <option value="organic" selected>Распространенный</option>
+                <option value="embedded">Полунезависимый</option>
+                <option value="semi-detached">Встроенный</option>
+            </select>
+        </div>
+
+        <!-- Input for Lines of Code -->
+        <div class="mb-4">
+            <h5>Строчек кода(в тыс.):</h5>
+            <input type="number" class="form-control" id="kloc" placeholder="Введите кол-во строк(в тыс.)" min="1">
+        </div>
+
+        <!-- Parameters for Intermediate Model -->
+        <div id="intermediateParams" class="mb-4" style="display: none;">
+            <h5>Атрибуты стоимости:</h5>
+            <ul class="list-group">
+                <li class="list-group-item"><h6>Характеристики продукта</h6>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item">Требуемая надежность ПО
+                            <select class="form-select" id="AF1">
+                                <option value="0.75" >Очень низкий</option>
+                                <option value="0.88">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="1.15">Высокий</option>
+                                <option value="1.40">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item">Размер БД приложения
+                            <select class="form-select" id="AF2">
+                                <option value="0.94">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="1.08">Высокий</option>
+                                <option value="1.16">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item">Сложность продукта
+                            <select class="form-select" id="AF3">
+                                <option value="0.7" >Очень низкий</option>
+                                <option value="0.85">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="1.15">Высокий</option>
+                                <option value="1.3">Очень высокий</option>
+                                <option value="1.65">Критический</option>
+                            </select>
+                        </li>
+                    </ol>
+                </li>
+                <li class="list-group-item"><h6>Характеристики аппаратного обеспечения</h6>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item">Ограничения быстродействия при выполнении программы
+                            <select class="form-select" id="AF4">
+                                <option value="1.0" selected>Средний</option>
+                                <option value="1.11">Высокий</option>
+                                <option value="1.3">Очень высокий</option>
+                                <option value="1.66">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item">Ограничения памяти
+                            <select class="form-select" id="AF5">
+                                <option value="1.0" selected>Средний</option>
+                                <option value="1.06">Высокий</option>
+                                <option value="1.21">Очень высокий</option>
+                                <option value="1.56">Критический</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item">Неустойчивость окружения виртуальной машины
+                            <select class="form-select" id="AF6">
+                                <option value="0.87">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="1.15">Высокий</option>
+                                <option value="1.3">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item">Требуемое время восстановления
+                            <select class="form-select" id="AF7">
+                                <option value="0.87">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="1.07">Высокий</option>
+                                <option value="1.15">Очень высокий</option>
+                            </select>
+                        </li>
+                    </ol>
+                </li>
+                <li class="list-group-item"><h6>Характеристики персонала</h6>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item">Аналитические способности
+                            <select class="form-select" id="AF8">
+                                <option value="1.46" >Очень низкий</option>
+                                <option value="1.19">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="0.86">Высокий</option>
+                                <option value="0.71">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item">Опыт разработки
+                            <select class="form-select" id="AF9">
+                                <option value="1.29" >Очень низкий</option>
+                                <option value="1.13">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="0.91">Высокий</option>
+                                <option value="0.82">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item">Способности к разработке ПО
+                            <select class="form-select" id="AF10">
+                                <option value="1.42" >Очень низкий</option>
+                                <option value="1.17">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="0.86">Высокий</option>
+                                <option value="0.7">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item">Опыт использования виртуальных машин
+                            <select class="form-select" id="AF11">
+                                <option value="1.21" >Очень низкий</option>
+                                <option value="1.1">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="0.9">Высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item">Опыт разработки на языках программирования
+                            <select class="form-select" id="AF12">
+                                <option value="1.14" >Очень низкий</option>
+                                <option value="1.1">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="0.9">Высокий</option>
+                            </select>
+                        </li>
+                    </ol>
+                </li>
+                <li class="list-group-item"><h6>Характеристики проекта</h6>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item">Применение методов разработки ПО
+                            <select class="form-select" id="AF13">
+                                <option value="1.24" >Очень низкий</option>
+                                <option value="1.1">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="0.91">Высокий</option>
+                                <option value="0.82">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item">Использование инструментария разработки ПО
+                            <select class="form-select" id="AF14">
+                                <option value="1.24" >Очень низкий</option>
+                                <option value="1.1">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="0.91">Высокий</option>
+                                <option value="0.83">Очень высокий</option>
+                            </select>
+                        </li>
+                        <li class="list-group-item">Требования соблюдения графика разработки
+                            <select class="form-select" id="AF15">
+                                <option value="1.23" >Очень низкий</option>
+                                <option value="1.08">Низкий</option>
+                                <option value="1.0" selected>Средний</option>
+                                <option value="1.04">Высокий</option>
+                                <option value="1.1">Очень высокий</option>
+                            </select>
+                        </li>
+                    </ol>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Results Section -->
+        <div class="mt-4">
+            <h5>Результат:</h5>
+            <p id="effort">Трудоёмкость(человекомесяцев): <span class="fw-bold">N/A</span></p>
+            <p id="time">Время разработки (месяцев): <span class="fw-bold">N/A</span></p>
+        </div>
+    </div>
+    <!-- <header class="page-header">
+        <div class="page-header__conteiner">
+            <a class="page-header__conteiner-link" href="">COCOMO</a>
+            <a class="page-header__conteiner-link" href="">COCOMOⅡ</a>
+            <a class="page-header__conteiner-link" href="">About</a>
+        </div>
+    </header>  
+    <footer class="page-footer">©2024, ИП «SoftCalc»</footer>-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="./js/index.js" type="module"></script>
 </body>
 </html>

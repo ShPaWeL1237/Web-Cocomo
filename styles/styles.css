@@ -1,3 +1,22 @@
-p{
-    color: blue;
+
+a{
+    text-decoration:none;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+}
+/* .body{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 120px;
+} */
+.main{
+    flex: 1 0 auto;
+}
+.page-footer{
+    flex: 0 0 auto;
+    background-color: #777777;
 }
