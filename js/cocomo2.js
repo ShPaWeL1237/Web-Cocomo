@@ -18,22 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         effortMultipliers.style.display = 'none';
         updateResults();
     });
-    
-    const popup = new bootstrap.Modal(document.getElementById('licensePopup'));
-    const agreeButton = document.getElementById('agreeButton');
 
-    // Проверяем, есть ли запись о принятии соглашения в localStorage
-    const hasAgreed = localStorage.getItem('agreedToLicense');
 
-    if (!hasAgreed) {
-        // Показываем pop-up, если соглашение не было принято
-        popup.show();
-    }
-
-    // Обработка нажатия кнопки "Я согласен"
-    agreeButton.addEventListener('click', () => {
-        localStorage.setItem('agreedToLicense', 'true');
-    });
 
     // Recalculate whenever inputs change
 
