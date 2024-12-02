@@ -7,7 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const effort = document.getElementById('effort');
     const time = document.getElementById('time');
 
-
+    const input = document.getElementById('kloc');
+    const maxDecimals = 3; // Максимум 2 знака после запятой
+    
+    input.addEventListener('input', () => {
+        // Ограничиваем количество знаков после запятой
+        const value = input.value;
+        if (value.includes('.')) {
+            const [integerPart, decimalPart] = value.split('.');
+            if (decimalPart && decimalPart.length > maxDecimals) {
+                input.value = `${integerPart}.${decimalPart.substring(0, maxDecimals)}`;
+            }
+        }
+    });
     // Toggle visibility of Intermediate parameters
     basicModel.addEventListener('change', () => {
         intermediateParams.style.display = 'none';
@@ -18,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateResults();
     });
 
-    // Recalculate whenever inputs change
     projectType.addEventListener('change', updateResults);
     loc.addEventListener('input', updateResults);
 

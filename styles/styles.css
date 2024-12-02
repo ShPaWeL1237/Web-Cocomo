@@ -5,6 +5,7 @@ a{
 body{
     margin: 0px;
     padding: 0px;
+    margin-bottom: 155px;
 }
 /* .body{
     box-sizing: border-box;
@@ -19,4 +20,20 @@ body{
 .page-footer{
     flex: 0 0 auto;
     background-color: #777777;
+}
+.result-block {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 485px;
+    background: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    border-radius: 0px 15px 15px 0px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.result-block.static {
+    position: static;
+    border-top: none;
 }

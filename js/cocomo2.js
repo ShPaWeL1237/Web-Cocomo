@@ -72,11 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const EMPAns = [];
         for (let i = 1; i <= 16; i++) {
-            const dropdown = document.getElementById(`EM${i}`);
+            const dropdown = document.getElementById(`EMPA${i}`);
             const value = dropdown ? parseFloat(dropdown.value) : 1.0;
             EMPAns.push(value);
         }
-        const EMPA = EMns;
+        const EMPA = EMPAns;
         var dropdown = document.getElementById("EMPA17");
         var value = dropdown ? parseFloat(dropdown.value) : 1.0;
         EMPA.push(value);
@@ -94,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const EAFns = EMns.reduce((acc, factor) => acc * factor, 1);
             const e = b + (0.01 * SSF);
             var PM = EAF * a * Math.pow(locValue, e);
-            console.log(SSF);
             const PMns = EAFns * a * Math.pow(locValue, e);
             var TM = SCED * c * Math.pow(PMns, (d+0.2*(e-b)));
         }else{
@@ -104,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
             var PM = EAF * a * Math.pow(locValue, e);
             const PMns = EAFns * a * Math.pow(locValue, e);
             var TM = SCED * c * Math.pow(PMns, (d+0.2*(e-b)));
-            console.log(a);
         }
 
 

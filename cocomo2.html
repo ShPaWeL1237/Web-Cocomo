@@ -12,15 +12,37 @@
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body class="body">
+    <div id="licensePopup" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="licensePopupLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="licensePopupLabel">Согласие с лицензионным соглашением</h5>
+              <button type="button" class="btn-close" id="closePopup" aria-label="Закрыть"></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                The MIT License (MIT)<br><br>
+                (C) Шелкунов Павел, 2024 <br><br>
+                Разрешение даётся этим документом, без требования оплаты, любому лицу получившего копию этой программы для ЭВМ и сопроводительную документацию (далее "Программное обеспечение" или "ПО"), торговать и использовать ПО без ограничений, включая отсутствие ограничений использовать, копировать, модифицировать, объединять, публиковать, распространять, сублицензировать, и/или продавать копии ПО и разрешать лицам, для которых ПО предоставляется для вышеизложенный действий, при соблюдении следующих условий:<br>
+Вышеизложенное уведомление об авторстве и это уведомление о разрешении должно быть включено во все копии и значимые части ПО.<br>
+ПО ПРЕДОСТАВЛЯЕТСЯ "КАК ЕСТЬ" БЕЗ ГАРАНТИЙ ЛЮБОГО ВИДА, ЭКСПРЕСС-ГАРАНТИЙ ИЛИ ПОДРАЗУМЕВАЕМЫХ, ВКЛЮЧАЯ, НО НЕ ОГРАНИЧИВАЯСЬ ГАРАНТИЯМИ ТОВАРНОЙ ПРИГОДНОСТИ, СООТВЕТСТВИЯ КОНКРЕТНОЙ ЦЕЛИ И НЕНАРУШЕНИЯ ПРАВ. НИ ПРИ КАКОМ СОБЫТИИ АВТОРЫ И ПРАВООБЛАДАТЕЛИ НЕ ОТВЕТСТВЕННЫ ЮРИДИЧЕСКИ ЗА ЛЮБОЕ ЗАЯВЛЕНИЕ, УЩЕРБ ИЛИ ДРУГОЕ ЮРИДИЧЕСКОЕ ОБЯЗАТЕЛЬСТВО, ЛИБО ПО ДЕЙСТВИЮ ДОГОВОРА, ДЕЛИКТА, ЛИБО ИНАЧЕ, НАЧИНАЮЩЕГО ОТ, ИЗ ИЛИ В СВЯЗИ С ПО, ЛИБО ДРУГОЙ ТОРГОВЛЕЙ ИЛИ ИСПОЛЬЗОВАНИЕМ ПО.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button id="agreeButton" type="button" class="btn btn-primary" data-bs-dismiss="modal">Я согласен</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="container mt-5">
         <div class="btn-group mb-4">
             <a class="btn btn-primary" href="index.html">COCOMO</a>
-            <a class="btn btn-primary active" href="#">COCOMOⅡ</a>
-            <a class="btn btn-primary" href="#">About</a>
+            <a class="btn btn-primary active" href="cocomo2.html">COCOMOⅡ</a>
+            <a class="btn btn-primary" href="cocomo.pdf">About</a>
         </div>
 
         <div class="mb-4">
-            <h5>Выберете модель:</h5>
+            <h5>Выберите модель:</h5>
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                 <input type="radio" class="btn-check" name="modelType" id="earlyDesign" value="basic" checked>
                 <label class="btn btn-outline-primary" for="earlyDesign">Early Design</label>
@@ -40,7 +62,7 @@
         <div class="mb-4" >
             <h5>Факторы масштаба:</h5>
             <ul class="list-group">
-                        <li class="list-group-item"><h6>Прецидентность</h6>
+                        <li class="list-group-item"><h6>Прецедентность</h6>
                             <select class="form-select" id="SF1">
                                 <option value="6.20" >Очень низкий</option>
                                 <option value="4.96">Низкий</option>
@@ -334,7 +356,7 @@
         </div>
 
         <!-- Results Section -->
-        <div class="mt-4">
+        <div id="resultBlock" class="result-block shadow p-3">
             <h5>Результат:</h5>
             <p id="effort">Трудоёмкость(человекомесяцев): <span class="fw-bold">N/A</span></p>
             <p id="time">Время разработки (месяцев): <span class="fw-bold">N/A</span></p>
@@ -352,5 +374,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="./js/cocomo2.js" type="module"></script>
+    <script src="./js/license.js" type="module"></script>
 </body>
 </html>
